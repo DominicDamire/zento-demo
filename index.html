@@ -229,7 +229,7 @@ function go(a,v){
     tab:()=>{S.tab=v;S.v=null;S.flow=null;S.th=null},
     cat:()=>S.cat=S.cat===v?null:v,
     biz:()=>S.v=v,home:()=>{S.v=null;S.flow=null;S.tab='home'},
-    start:()=>{const[b,i]=v.split(':');S.flow={biz:b,sv:+i,step:1,st:-1,date:dk(days(7)[0]),t:null}},
+    start:()=>{const[b,i]=v.split(':');const B=BIZ.find(x=>x.id===b),len=B.sv[+i][1],d0=days(7).find(d=>{for(let t=540;t+len<=1020;t+=30)if(!takenFor(B,-1,d,t,len))return 1})||days(7)[0];S.flow={biz:b,sv:+i,step:1,st:-1,date:dk(d0),t:null}},
     fb:()=>{if(F.step===0||F.step===4){S.flow=null}else F.step--},
     fn:()=>F.step++,fsv:()=>F.sv=+v,fst:()=>F.st=+v,fd:()=>{F.date=v;F.t=null;F.wmsg=0},ft:()=>F.t=+v,
     joinw:()=>{const b=BIZ.find(x=>x.id===F.biz);if(F.biz==='bl')S.wait.unshift({id:Date.now(),n:'Demo Guest (you)',sv:b.sv[F.sv][0],pref:(F.st<0?'Any barber':b.staff[F.st])+' · '+F.date,ago:'just now',state:''});F.wmsg=1},
